@@ -113,20 +113,20 @@ public class BankingAcctDaoImpl implements BankingAcctDao {
 	public BankingAcct viewBalance(BankingAcct bankingAcct) {
 
 		Connection conn = null;
-		bankingAcct = null;
 
 		try {
 			conn = DBUtil.makeConnection();
 			Statement stmt = conn.createStatement();
-			String query = "SELECT * FROM bankingacct WHERE acct_num=" + bankingAcct.getAcct_num();
+			String query = "SELECT acct_num, acct_balance FROM bankingacct WHERE user_num =" + bankingAcct.getUser_num();
 			ResultSet rs = stmt.executeQuery(query);
-			
 			if (rs.next()) {
-				bankingAcct = new BankingAcct(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4));
+				bankingAcct = new BankingAcct(rs.getInt(1), rs.getDouble(2));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("    Account Number: " + bankingAcct.getAcct_num());
+		System.out.println("   Account Balance: " + bankingAcct.getAcct_balance());
 		return bankingAcct;
 	}
 	

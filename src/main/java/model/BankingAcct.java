@@ -29,6 +29,12 @@ public class BankingAcct {
 		this.acct_type = acct_type;
 		this.acct_balance = acct_balance;
 	}
+	
+	public BankingAcct(int acct_num, double acct_balance) {
+		super();
+		this.acct_num = acct_num;
+		this.acct_balance = acct_balance;
+	}
 
 
 

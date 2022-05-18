@@ -17,7 +17,6 @@ public class BankingManagementSystem {
 		Scanner scan = new Scanner(System.in);
 		BankingUserService bankingUserService = new BankingUserServiceImpl();
 		BankingAcctService bankingAcctService = new BankingAcctServiceImpl();
-		BankingAcct returnedBankingAcct = new BankingAcct();
 		BankingUser returnedBankingUser = new BankingUser();
 		BankingAcct createAcct = new BankingAcct();
 		BankingUser newUser = new BankingUser();
@@ -37,7 +36,7 @@ public class BankingManagementSystem {
 			int selection = scan.nextInt();
 			switch (selection) {
 
-			// CREATE AN ACCOUNT
+
 			case 1:
 				System.out.println("\n   **Input User Information***\n");
 				System.out.print("First Name: ");
@@ -79,7 +78,7 @@ public class BankingManagementSystem {
 				bankingAcctService.newAcct(createAcct);
 				break;
 
-			// LOGIN
+
 			case 2:
 				BankingUser loginUser = new BankingUser();
 
@@ -123,9 +122,9 @@ public class BankingManagementSystem {
 				int accountSelection = scan.nextInt();
 				System.out.println("\n");
 
-				// SUB MENU ONCE USER IS AUTHENTICATED
+
 				switch (accountSelection) {
-				// DEPOSIT FUNDS
+
 				case 1:
 					System.out.println("********************************");
 					System.out.println("*        ACCOUNT DEPOSIT       *");
@@ -144,7 +143,6 @@ public class BankingManagementSystem {
 					}
 					break;
 
-				// WITHDRAW FUNDS
 				case 2:
 					System.out.println("********************************");
 					System.out.println("*       ACCOUNT WITHDRAW       *");
@@ -162,15 +160,11 @@ public class BankingManagementSystem {
 					}
 					break;
 
-				// ACCOUNT BALANCE
 				case 3:
 					System.out.println("********************************");
 					System.out.println("*        ACCOUNT BALANCE       *");
 					System.out.println("********************************\n");
-					System.out.println("   Account Number: " + createAcct.getAcct_num());
-					System.out.println("      User Number: " + createAcct.getUser_num());
-					System.out.println("    cAccount Type: " + createAcct.getAcct_type());
-					System.out.println("  Account Balance: " + createAcct.getAcct_balance());
+					bankingAcctService.viewBalance(createAcct);
 					break;
 
 				default:
